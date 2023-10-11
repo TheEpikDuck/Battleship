@@ -1,28 +1,31 @@
 public class BattleShip {
-public static void main(String[] args) {
-    int[][] board = new int[10][10];
-    int[][] ships = new int[3][2];
-    int[] shoot = new int[2];
-    int attempts=0,
-        shotHit=0;
+    public static void main(String[] args) {
+        int[][] board = new int[10][10];
+        
+    initBoard(board);
+    showBoard(board);
+}
 
-    intBoard(board)
-    intShips(ships)
-
-    System.out.println();
-
-    do
-    {
-        showBoard(board);
-        shoot(shoot);
-        attempts++
-
-        if(hit(shoot,ships)){
-            hint(shoot,ships,attempts);
-            shotHit++;
+    public static void initBoard(int[][] board){
+        for(int row=0 ; row < 10 ; row++ )
+            for(int column=0 ; column < 10 ; column++ )
+                board[row][column]=-1;
+    }
+    public static void showBoard(int[][] board){
+        for(int row=0 ; row < 5 ; row++ ){
+            System.out.print((row+1)+"");
+        for(int column=0 ; column < 5 ; column++ ){
+                if(board[row][column]==-1){
+                System.out.print("\t"+"~");
+                }else if(board[row][column]==0){
+                System.out.print("\t"+"*");
+                }else if(board[row][column]==1){
+                System.out.print("\t"+"X");
+            }
+            
         }
-        else
-        hint(shoot,ships,attempts);
-        changeboard(shoot,ships,board);
+        System.out.println();
     }
 }
+}
+
