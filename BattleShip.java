@@ -1,31 +1,39 @@
 public class BattleShip {
-    public static void main(String[] args) {
-        int[][] board = new int[10][10];
-        
-    initBoard(board);
-    showBoard(board);
-}
+ 
+    static int numRows = 10;
+    static int numCols = 10;
+    static String[][] grid = new String[numRows][numCols];
 
-    public static void initBoard(int[][] board){
-        for(int row=0 ; row < 10 ; row++ )
-            for(int column=0 ; column < 10 ; column++ )
-                board[row][column]=-1;
-    }
-    public static void showBoard(int[][] board){
-        for(int row=0 ; row < 5 ; row++ ){
-            System.out.print((row+1)+"");
-        for(int column=0 ; column < 5 ; column++ ){
-                if(board[row][column]==-1){
-                System.out.print("\t"+"~");
-                }else if(board[row][column]==0){
-                System.out.print("\t"+"*");
-                }else if(board[row][column]==1){
-                System.out.print("\t"+"X");
-            }
-            
+    public static void main(String[] args){
+        System.out.println("**** Welcome to BattleShip! ****");
+        createMap();
+}
+    public static void createMap(){
+    
+        System.out.print("  ");
+        for(int i = 0; i < numCols; i++)
+            System.out.print(i);
+        System.out.println();
+
+    
+        for(int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                grid[i][j] = " |";
+            if (j == 0)
+                System.out.print("|" + grid[i][j]);
+            else if (j == grid[i].length - 1)
+                System.out.print(grid[i][j] + "-");
+            else
+                System.out.print(grid[i][j]);
         }
         System.out.println();
     }
-}
+
+    
+    System.out.print("  ");
+    for(int i = 0; i < numCols; i++)
+        System.out.print(i);
+    System.out.println();
 }
 
+}
