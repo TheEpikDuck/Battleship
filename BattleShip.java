@@ -6,6 +6,7 @@ public class BattleShip {
 
     public static void main(String[] args){
         System.out.println("**** Welcome to BattleShip! ****");
+        //add instructions and ask the player if they want to play or not then make the map
         createMap();
 }
     public static void createMap(){
@@ -21,8 +22,8 @@ public class BattleShip {
                 grid[i][j] = " |";
             if (j == 0)
                 System.out.print("|" + grid[i][j]);
-            else if (j == grid[i].length - 1)
-                System.out.print(grid[i][j] + "-");
+            else if (i == 0 )
+                System.out.print("-" + grid[i][j] );
             else
                 System.out.print(grid[i][j]);
         }
