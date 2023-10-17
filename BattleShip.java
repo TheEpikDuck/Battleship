@@ -8,10 +8,12 @@ public class BattleShip {
     static int[][] missedGuesses = new int [numRows][numCols];
 
     public static void main(String[] args){
+        //innsturctions
         System.out.println("**** Welcome to BattleShip! ****");
-        System.out.println("Would you like to play a round of battleship?")
-        if(yes)
-        //add instructions and ask the player if they want to play or not then make the map (haven't really finished this part yet, but will do before the deadline)
+        System.out.println("The main goal of this game is to sink the computer's ships");
+        System.out.println("To sink ships and place ships, type in the coordinates of the tile");
+        System.out.println("Are you ready?");
+        
         createMap();
         deployPlayerShips();
         deployComputerShips();
