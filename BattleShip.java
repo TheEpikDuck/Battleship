@@ -95,9 +95,7 @@ public static void deployComputerShips(){
     }
 }
 
-/**
- * 
- */
+
 public static void playerTurn(){
     System.out.println("your turn");
     int x = -1, y = -1;
@@ -108,6 +106,18 @@ public static void playerTurn(){
         System.out.print("Enter Y coordinate: ");
         y = input.nextInt();
 
-        
+
+    }
 }
+
+public static void computerTurn(){
+    System.out.println("computer's turn");
+    //Guess co-ordinates
+    int x = -1, y = -1;
+    do {
+        x = (int)(Math.random() * 10);
+        y = (int)(Math.random() * 10);
+
+
+    }
 }
