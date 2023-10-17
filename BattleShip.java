@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//this is still a very much work in progress, a lot of things are currently half finished
 public class BattleShip {
  
     static int numRows = 10;
