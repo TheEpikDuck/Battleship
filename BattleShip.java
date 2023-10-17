@@ -19,7 +19,8 @@ public class BattleShip {
         createMap();
         deployPlayerShips();
         deployComputerShips();
-        
+        playerTurn();
+        computerTurn();
         gameOver();
 }
 private static void gameOver() {
@@ -55,7 +56,7 @@ public static void createMap(){
     System.out.println();
 }
 //adding in player ships now
-
+//something is wrong with this code right now, not sure how to fix it yet
 public static void deployPlayerShips(){
      Scanner input = new Scanner(System.in) {
         System.out.println("Please deploy your ships:");
@@ -76,7 +77,7 @@ public static void deployPlayerShips(){
                 else if((x < 0 || x >= numRows) || (y < 0 || y >= numCols))
                     System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
             }
-    }
+    
 
     }
 
@@ -94,4 +95,19 @@ public static void deployComputerShips(){
     }
 }
 
+/**
+ * 
+ */
+public static void playerTurn(){
+    System.out.println("your turn");
+    int x = -1, y = -1;
+    do {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter X coordinate: ");
+        x = input.nextInt();
+        System.out.print("Enter Y coordinate: ");
+        y = input.nextInt();
+
+        
+}
 }
