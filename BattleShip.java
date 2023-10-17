@@ -48,6 +48,7 @@ public static void createMap(){
     System.out.println();
 }
 //adding in player ships now
+
 public static void deployPlayerShips(){
     Scanner input = new Scanner(System.in);
 
@@ -60,5 +61,13 @@ public static void deployPlayerShips(){
         int y = input.nextInt();
     }
 }
+//adding in computer ships 
+public static void deployComputerShips(){
+    System.out.println("Computer is deploying ships");
+    
+    BattleShips.computerShips = 5;
+    for (int i = 1; i <= BattleShips.computerShips; ) {
+        int x = (int)(Math.random() * 10);
+        int y = (int)(Math.random() * 10);
 
 }
