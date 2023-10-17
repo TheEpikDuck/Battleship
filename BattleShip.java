@@ -2,17 +2,25 @@ public class BattleShip {
  
     static int numRows = 10;
     static int numCols = 10;
+    static int playerShips;
+    static int computerShips;
     static String[][] grid = new String[numRows][numCols];
+    static int[][] missedGuesses = new int [numRows][numCols];
 
     public static void main(String[] args){
         System.out.println("**** Welcome to BattleShip! ****");
         //add instructions and ask the player if they want to play or not then make the map
         createMap();
         deployPlayerShips();
-        deployComputerShips();
+        deployPlayerShips();
         gameOver();
 }
-    public static void createMap(){
+private static void gameOver() {
+    }
+
+    
+//creating the map    
+public static void createMap(){
     
         System.out.print("  ");
         for(int i = 0; i < numCols; i++)
@@ -35,9 +43,22 @@ public class BattleShip {
 
     
     System.out.print("  ");
-    for(int i = 0; i < numCols; i++)
+    for(int i = 0; i < numRows; i++)
         System.out.print(i);
     System.out.println();
+}
+//adding in player ships now
+public static void deployPlayerShips(){
+    Scanner input = new Scanner(System.in);
+
+    System.out.println("Please deploy your ships:");
+    BattleShip.playerShips = 5;
+    for (int i = 1; i <= BattleShip.playerShips;){
+        System.out.print("Enter X coordinate for your " + i + " ship: ");
+        int x = input.nextInt();
+        System.out.print("Enter Y coordinate for your " + i + " ship: ");
+        int y = input.nextInt();
+    }
 }
 
 }
