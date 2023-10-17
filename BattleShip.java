@@ -21,10 +21,8 @@ public class BattleShip {
         deployComputerShips();
         playerTurn();
         computerTurn();
-        gameOver();
-}
-private static void gameOver() {
     }
+
 
     
 //creating the map    
@@ -58,8 +56,8 @@ public static void createMap(){
 //adding in player ships now
 //something is wrong with this code right now, not sure how to fix it yet
 public static void deployPlayerShips(){
-     Scanner input = new Scanner(System.in) {
-        System.out.println("Please deploy your ships:");
+    Scanner input = new Scanner(System.in) {
+    System.out.println("Please deploy your ships:");
         BattleShip.playerShips = 5;
         for (int i = 1; i <= BattleShip.playerShips;){
             System.out.print("Enter X coordinate for your " + i + " ship: ");
@@ -83,7 +81,7 @@ public static void deployPlayerShips(){
 
 
 //adding in computer ships 
-
+//I haven't really finished any of the things below, i just put down like the basic things that i'm going to do
 public static void deployComputerShips(){
     System.out.println("Computer is deploying ships");
     
@@ -99,7 +97,7 @@ public static void deployComputerShips(){
 public static void playerTurn(){
     System.out.println("your turn");
     int x = -1, y = -1;
-    do {
+     {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter X coordinate: ");
         x = input.nextInt();
@@ -114,7 +112,7 @@ public static void computerTurn(){
     System.out.println("computer's turn");
     //Guess co-ordinates
     int x = -1, y = -1;
-    do {
+    {
         x = (int)(Math.random() * 10);
         y = (int)(Math.random() * 10);
 
