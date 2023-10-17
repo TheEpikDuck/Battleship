@@ -67,6 +67,14 @@ public static void deployPlayerShips(){
         int x = input.nextInt();
         System.out.print("Enter Y coordinate for your " + i + " ship: ");
         int y = input.nextInt();
+
+        if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && (grid[x][y] == " "))
+            {
+                grid[x][y] =   "@";
+                i++;
+            }
+            else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "@")
+                
     }
 }
 //adding in computer ships 
