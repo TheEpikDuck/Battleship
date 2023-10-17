@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class BattleShip {
  
     static int numRows = 10;
@@ -17,10 +19,7 @@ public class BattleShip {
         createMap();
         deployPlayerShips();
         deployComputerShips();
-        do{
-            Battle();
-        }
-        while(BattleShip.playerShips != 0 && BattleShip.computerShips !=0);
+        
         gameOver();
 }
 private static void gameOver() {
@@ -58,26 +57,26 @@ public static void createMap(){
 //adding in player ships now
 
 public static void deployPlayerShips(){
-    Scanner input = new Scanner(System.in);
+     Scanner input = new Scanner(System.in) {
+        System.out.println("Please deploy your ships:");
+        BattleShip.playerShips = 5;
+        for (int i = 1; i <= BattleShip.playerShips;){
+            System.out.print("Enter X coordinate for your " + i + " ship: ");
+            int x = input.nextInt();
+            System.out.print("Enter Y coordinate for your " + i + " ship: ");
+            int y = input.nextInt();
 
-    System.out.println("Please deploy your ships:");
-    BattleShip.playerShips = 5;
-    for (int i = 1; i <= BattleShip.playerShips;){
-        System.out.print("Enter X coordinate for your " + i + " ship: ");
-        int x = input.nextInt();
-        System.out.print("Enter Y coordinate for your " + i + " ship: ");
-        int y = input.nextInt();
-
-        if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && (grid[x][y] == " "))
-            {
-                grid[x][y] =   "X";
-                i++;
+            if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && (grid[x][y] == " "))
+                {
+                    grid[x][y] =   "X";
+                    i++;
+                }
+                else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "@")
+                    System.out.println("You can't place two or more ships on the same location");
+                else if((x < 0 || x >= numRows) || (y < 0 || y >= numCols))
+                    System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
             }
-            else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "@")
-                System.out.println("You can't place two or more ships on the same location");
-            else if((x < 0 || x >= numRows) || (y < 0 || y >= numCols))
-                System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
-        }
+    }
 
     }
 
@@ -94,11 +93,5 @@ public static void deployComputerShips(){
 
     }
 }
-public static void Battle(){
-    playerTurn();
-    computerTurn();
 
-    System.out.println();
-    System.out.println("Your ships: " + BattleShip.playerShips + " | Computer ships: " + BattleShip.computerShips);
-    System.out.println();
 }
