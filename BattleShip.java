@@ -8,6 +8,9 @@ public class BattleShip {
         System.out.println("**** Welcome to BattleShip! ****");
         //add instructions and ask the player if they want to play or not then make the map
         createMap();
+        deployPlayerShips();
+        deployComputerShips();
+        gameOver();
 }
     public static void createMap(){
     
@@ -19,11 +22,11 @@ public class BattleShip {
     
         for(int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                grid[i][j] = " |";
+                grid[i][j] = " ";
             if (j == 0)
-                System.out.print("|" + grid[i][j]);
-            else if (i == 0 )
-                System.out.print("-" + grid[i][j] );
+                System.out.print("~" + grid[i][j]);
+            else if (j == grid[i].length - 1)
+                System.out.print(grid[i][j] + "~" + 1);
             else
                 System.out.print(grid[i][j]);
         }
