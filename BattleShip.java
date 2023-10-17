@@ -9,10 +9,16 @@ public class BattleShip {
 
     public static void main(String[] args){
         System.out.println("**** Welcome to BattleShip! ****");
-        //add instructions and ask the player if they want to play or not then make the map
+        System.out.println("Would you like to play a round of battleship?")
+        if(yes)
+        //add instructions and ask the player if they want to play or not then make the map (haven't really finished this part yet, but will do before the deadline)
         createMap();
         deployPlayerShips();
-        deployPlayerShips();
+        deployComputerShips();
+        do{
+            Battle();
+        }
+        while(BattleShip.playerShips != 0 && BattleShip.computerShips !=0);
         gameOver();
 }
 private static void gameOver() {
@@ -65,9 +71,8 @@ public static void deployPlayerShips(){
 public static void deployComputerShips(){
     System.out.println("Computer is deploying ships");
     
-    BattleShips.computerShips = 5;
-    for (int i = 1; i <= BattleShips.computerShips; ) {
+    BattleShip.computerShips = 5;
+    for (int i = 1; i <= BattleShip.computerShips; ) {
         int x = (int)(Math.random() * 10);
         int y = (int)(Math.random() * 10);
-
 }
