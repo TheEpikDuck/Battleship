@@ -70,14 +70,20 @@ public static void deployPlayerShips(){
 
         if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && (grid[x][y] == " "))
             {
-                grid[x][y] =   "@";
+                grid[x][y] =   "X";
                 i++;
             }
             else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "@")
-                
+                System.out.println("You can't place two or more ships on the same location");
+            else if((x < 0 || x >= numRows) || (y < 0 || y >= numCols))
+                System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
+        }
+
     }
-}
+
+
 //adding in computer ships 
+
 public static void deployComputerShips(){
     System.out.println("Computer is deploying ships");
     
@@ -85,4 +91,14 @@ public static void deployComputerShips(){
     for (int i = 1; i <= BattleShip.computerShips; ) {
         int x = (int)(Math.random() * 10);
         int y = (int)(Math.random() * 10);
+
+    }
+}
+public static void Battle(){
+    playerTurn();
+    computerTurn();
+
+    System.out.println();
+    System.out.println("Your ships: " + BattleShip.playerShips + " | Computer ships: " + BattleShip.computerShips);
+    System.out.println();
 }
