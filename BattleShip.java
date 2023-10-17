@@ -111,6 +111,9 @@ public static void playerTurn(){
                 System.out.println("Boom! You sunk the ship!");
                 grid[x][y] = "!"; //Hit mark
                 --BattleShip.computerShips;
+
+            else if
+
             }
         }
 
@@ -129,3 +132,5 @@ public static void computerTurn(){
 
     }
 }
+}
+
