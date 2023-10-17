@@ -97,12 +97,22 @@ public static void deployComputerShips(){
 public static void playerTurn(){
     System.out.println("your turn");
     int x = -1, y = -1;
-     {
+     do {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter X coordinate: ");
         x = input.nextInt();
         System.out.print("Enter Y coordinate: ");
         y = input.nextInt();
+
+        if ((x >= 0 && x < numRows) && (y >= 0 && y < numCols)) //valid guess
+        {
+            if (grid[x][y] == "x") //if computer ship is already there; computer loses ship
+            {
+                System.out.println("Boom! You sunk the ship!");
+                grid[x][y] = "!"; //Hit mark
+                --BattleShip.computerShips;
+            }
+        }
 
 
     }
