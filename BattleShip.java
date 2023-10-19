@@ -2,8 +2,8 @@ import java.util.Scanner;
 //this is still a very much work in progress, a lot of things are currently half finished
 public class BattleShip {
  
-    static int numRows = 10;
-    static int numCols = 10;
+    static int numRows = 11;
+    static int numCols = 11;
     static int player1Ships;
     static int player2Ships;
     static int computerShips;
@@ -22,10 +22,16 @@ public class BattleShip {
         deployPlayer2Ships();
         player1Turn();
         player2Turn();
+        do {
+            Battle();
+        }while(BattleShip.player1Ships != 0 && BattleShip.player2Ships != 0);
     }
 
 
-    
+
+
+
+
 //creating the map    
 public static void createMap(){
     
@@ -35,12 +41,12 @@ public static void createMap(){
         System.out.println();
 
     
-        for(int i = 1; i < grid.length; i++) {
+        for(int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                grid[i][j] = "  ";
+                grid[i][j] = " ";
             if (j == 0)
                 System.out.print("~" + grid[i][j]);
-            else if (i == 1)
+            else if (i == 0)
                 System.out.print(grid[i][j] + "~" );
             else 
                 System.out.print(grid[i][j]);
@@ -51,14 +57,14 @@ public static void createMap(){
     
     System.out.print("     ");
     for(int i = 1; i < numCols; i++)
-        System.out.print(i + " ");
+        System.out.print(i + "  ");
     System.out.println();
 }
 //adding in player ships now
 //something is wrong with this code right now, not sure how to fix it yet
 public static void deployPlayer1Ships(){
     Scanner input = new Scanner(System.in);
-    System.out.println("Please deploy your ships:");
+    System.out.println("Player 1 please deploy your ships:");
         BattleShip.player1Ships = 5;
         for (int i = 1; i <= BattleShip.player1Ships;){
             System.out.print("Enter X coordinate for your " + i + " ship: ");
@@ -84,7 +90,7 @@ public static void deployPlayer1Ships(){
 public static void deployPlayer2Ships(){
     Scanner input = new Scanner(System.in); {
         
-       System.out.println("Please deploy your ships:");
+       System.out.println("Player 2 please deploy your ships:");
     
         BattleShip.player2Ships = 5;
         for (int i = 1; i <= BattleShip.player2Ships;){
@@ -111,7 +117,7 @@ public static void deployPlayer2Ships(){
     }
 
     public static void player1Turn(){
-        System.out.println("your turn");
+        System.out.println("Player 1's turn");
         int x = -1, y = -1;
          do {
             Scanner input = new Scanner(System.in);
@@ -146,7 +152,7 @@ public static void deployPlayer2Ships(){
     
 }
     public static void player2Turn(){
-        System.out.println("your turn");
+        System.out.println("Player 2's turn");
         int x = -1, y = -1;
          do {
             Scanner input = new Scanner(System.in);
@@ -177,9 +183,19 @@ public static void deployPlayer2Ships(){
             
             else if ((x < 0 || x >= numRows) || (y < 0 || y >= numCols))  //invalid guess
                 System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
-        }while((x < 0 || x >= numRows) || (y < 0 || y >= numCols));  //keep re-prompting till valid guess
+        }while((x < 0 || x >= numRows) || (y < 0 || y >= numCols));
+      }  //keep re-prompting till valid guess
     
-}
+
+
+    public static void Battle(){
+        player1Turn();
+        player2Turn();
+
+        System.out.println();
+        System.out.println("Player 1 ships: " + BattleShip.player1Ships + " | Player 2 ships: " + BattleShip.player2Ships);
+        System.out.println();
+    }
 
 public static void gameOver(){
     System.out.println("Player 1 ships: " + BattleShip.player1Ships + " | Player 2 ships: " + BattleShip.player2Ships);
