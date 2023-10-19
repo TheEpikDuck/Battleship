@@ -83,21 +83,7 @@ public static void deployPlayerShips(){
     }
 
 
-//adding in computer ships 
-//I haven't really finished any of the things below, i just put down like the basic things that i'm going to do
-public static void deployComputerShips(){
-    System.out.println("Computer is deploying ships");
-    
-    BattleShip.computerShips = 3;
-    for (int i = 1; i <= BattleShip.computerShips; ) {
-        int x = (int)(Math.random() * 8);
-        int y = (int)(Math.random() * 8);
-
-    }
-}
-
-
-public static void playerTurn(){
+public static void player1Turn(){
     System.out.println("your turn");
     int x = -1, y = -1;
      do {
@@ -109,11 +95,10 @@ public static void playerTurn(){
 
         if ((x >= 0 && x < numRows) && (y >= 0 && y < numCols)) //valid guess
         {
-            if (grid[x][y] == "x") //if computer ship is already there; computer loses ship
-            {
+            if (grid[x][y] == "x") 
                 System.out.println("Boom! You sunk the ship!");
                 grid[x][y] = "!"; //Hit mark
-                --BattleShip.computerShips;
+                --BattleShip.player2Ships;
 
             else if (grid[x][y] == "#") {
                 System.out.println("Oh no, you sunk your own ship :(");
@@ -135,15 +120,43 @@ public static void playerTurn(){
 
 
     }
+
+    public static void player2Turn(){
+        System.out.println("your turn");
+        int x = -1, y = -1;
+         do {
+            Scanner input = new Scanner(System.in);
+            System.out.print("Enter X coordinate: ");
+            x = input.nextInt();
+            System.out.print("Enter Y coordinate: ");
+            y = input.nextInt();
+    
+            if ((x >= 0 && x < numRows) && (y >= 0 && y < numCols)) //valid guess
+            {
+                if (grid[x][y] == "x") 
+                    System.out.println("Boom! You sunk the ship!");
+                    grid[x][y] = "!"; //Hit mark
+                    --BattleShip.player1Ships;
+    
+                else if (grid[x][y] == "#") {
+                    System.out.println("Oh no, you sunk your own ship :(");
+                    grid[x][y] = "x";
+                    --BattleShip.player2Ships;
+                    ++BattleShip.player1Ships;
+                }
+                else if else if (grid[x][y] == " ") {
+                    System.out.println("Sorry, you missed");
+                    grid[x][y] = "-";
+                }
+                }
+            
+            else if ((x < 0 || x >= numRows) || (y < 0 || y >= numCols))  //invalid guess
+                System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
+        }while((x < 0 || x >= numRows) || (y < 0 || y >= numCols));  //keep re-prompting till valid guess
+    
 }
 
-public static void computerTurn(){
-    System.out.println("computer's turn");
-    //Guess co-ordinates
-    int x = -1, y = -1;
-    {
-        x = (int)(Math.random() * 10);
-        y = (int)(Math.random() * 10);
+
 
 
     }
