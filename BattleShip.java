@@ -1,8 +1,7 @@
 import java.util.Scanner;
 //this is still a very much work in progress, a lot of things are currently half finished
 public class BattleShip {
-    FastGame fastgame = new FastGame();
- 
+
     static int numRows = 11;
     static int numCols = 11;
     static int player1Ships;
@@ -184,7 +183,6 @@ public static void deployPlayer2Ships(){
                 System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
         }while((x < 0 || x >= numRows) || (y < 0 || y >= numCols));
       }  //keep re-prompting till valid guess
-    
 
 
     public static void Battle(){
@@ -203,6 +201,56 @@ public static void gameOver(){
     else
         System.out.println("Player 2 won yey :)");
     System.out.println();
+}
+
+
+
+   //for fast game
+   public static void deployComputerShips(){
+    System.out.println("Computer is deploying ships");
+    
+    BattleShip.computerShips = 3;
+    for (int i = 1; i <= BattleShip.computerShips; ) {
+        int x = (int)(Math.random() * 8);
+        int y = (int)(Math.random() * 8);
+
+        if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && (grid[x][y] == " "))
+        {
+            grid[x][y] =   "x";
+            System.out.println(i + ". ship deployed");
+            i++;
+        }
+    }
+}
+public static void playerTurn(){
+    System.out.println("\nYOUR TURN");
+    int x = -1, y = -1;
+    do {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter X coordinate: ");
+        x = input.nextInt();
+        System.out.print("Enter Y coordinate: ");
+        y = input.nextInt();
+
+        if ((x >= 0 && x < numRows) && (y >= 0 && y < numCols)) //valid guess
+        {
+            if (grid[x][y] == "x") //if computer ship is already there; computer loses ship
+            {
+                System.out.println("Boom! You sunk the ship!");
+                grid[x][y] = "!"; //Hit mark
+                --BattleShip.computerShips;
+            }
+            }
+            else if (grid[x][y] == " ") {
+                System.out.println("Sorry, you missed");
+                grid[x][y] = "-";
+            }
+
+        
+        else if ((x < 0 || x >= numRows) || (y < 0 || y >= numCols))  //invalid guess
+                System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
+        }while((x < 0 || x >= numRows) || (y < 0 || y >= numCols));  //keep re-prompting till valid guess
+
 }
 
 }
