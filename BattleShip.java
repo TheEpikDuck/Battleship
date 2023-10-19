@@ -110,15 +110,12 @@ public static void player1Turn(){
             }
             }
         
-        else if ((x < 0 || x >= numRows) || (y < 0 || y >= numCols))  //invalid guess
-            System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
-    }while((x < 0 || x >= numRows) || (y < 0 || y >= numCols));  //keep re-prompting till valid guess
 
-        }
-
-
-    }
-
+            else if ((x < 0 || x >= numRows) || (y < 0 || y >= numCols))  //invalid guess
+                System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
+        }while((x < 0 || x >= numRows) || (y < 0 || y >= numCols));  //keep re-prompting till valid guess
+    
+}
     public static void player2Turn(){
         System.out.println("your turn");
         int x = -1, y = -1;
