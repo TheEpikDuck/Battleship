@@ -19,11 +19,9 @@ public class BattleShip {
         
         createMap();
         deployPlayer1Ships();
-        deployPlayer2Ships()
-        deployComputerShips();
+        deployPlayer2Ships();
         player1Turn();
         player2Turn();
-        computerTurn();
     }
 
 
@@ -58,7 +56,7 @@ public static void createMap(){
 }
 //adding in player ships now
 //something is wrong with this code right now, not sure how to fix it yet
-public static void deployPlayerShips(){
+public static void deployPlayer1Ships(){
     Scanner input = new Scanner(System.in) {
     System.out.println("Please deploy your ships:");
         BattleShip.playerShips = 5;
@@ -137,6 +135,7 @@ public static void player1Turn(){
                     System.out.println("Boom! You sunk the ship!");
                     grid[x][y] = "!"; //Hit mark
                     --BattleShip.player1Ships;
+                }
     
                 else if (grid[x][y] == "#") {
                     System.out.println("Oh no, you sunk your own ship :(");
@@ -144,11 +143,11 @@ public static void player1Turn(){
                     --BattleShip.player2Ships;
                     ++BattleShip.player1Ships;
                 }
-                else if else if (grid[x][y] == " ") {
+                else if (grid[x][y] == " ") {
                     System.out.println("Sorry, you missed");
                     grid[x][y] = "-";
                 }
-                }
+                
             
             else if ((x < 0 || x >= numRows) || (y < 0 || y >= numCols))  //invalid guess
                 System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
@@ -156,10 +155,18 @@ public static void player1Turn(){
     
 }
 
+public static void gameOver(){
+    System.out.println("Player 1 ships: " + BattleShip.player1Ships + " | Player 2 ships: " + BattleShip.player2Ships);
+    if(BattleShip.player1Ships > 0 && BattleShip.player2Ships <= 0)
+        System.out.println("Player 1 won yey :)");
+    else
+        System.out.println("Player 2 won yey :)");
+    System.out.println();
+
 
 
 
     }
 }
-}
+
 
