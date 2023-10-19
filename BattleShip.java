@@ -4,7 +4,8 @@ public class BattleShip {
  
     static int numRows = 10;
     static int numCols = 10;
-    static int playerShips;
+    static int player1Ships;
+    static int player2Ships;
     static int computerShips;
     static String[][] grid = new String[numRows][numCols];
     static int[][] missedGuesses = new int [numRows][numCols];
@@ -17,9 +18,11 @@ public class BattleShip {
         System.out.println("Are you ready?");
         
         createMap();
-        deployPlayerShips();
+        deployPlayer1Ships();
+        deployPlayer2Ships()
         deployComputerShips();
-        playerTurn();
+        player1Turn();
+        player2Turn();
         computerTurn();
     }
 
@@ -85,10 +88,10 @@ public static void deployPlayerShips(){
 public static void deployComputerShips(){
     System.out.println("Computer is deploying ships");
     
-    BattleShip.computerShips = 5;
+    BattleShip.computerShips = 3;
     for (int i = 1; i <= BattleShip.computerShips; ) {
-        int x = (int)(Math.random() * 10);
-        int y = (int)(Math.random() * 10);
+        int x = (int)(Math.random() * 8);
+        int y = (int)(Math.random() * 8);
 
     }
 }
@@ -112,9 +115,22 @@ public static void playerTurn(){
                 grid[x][y] = "!"; //Hit mark
                 --BattleShip.computerShips;
 
-            else if
-
+            else if (grid[x][y] == "#") {
+                System.out.println("Oh no, you sunk your own ship :(");
+                grid[x][y] = "x";
+                --BattleShip.player1Ships;
+                ++BattleShip.player2Ships;
             }
+            else if else if (grid[x][y] == " ") {
+                System.out.println("Sorry, you missed");
+                grid[x][y] = "-";
+            }
+            }
+        
+        else if ((x < 0 || x >= numRows) || (y < 0 || y >= numCols))  //invalid guess
+            System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
+    }while((x < 0 || x >= numRows) || (y < 0 || y >= numCols));  //keep re-prompting till valid guess
+
         }
 
 
