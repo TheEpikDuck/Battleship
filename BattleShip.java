@@ -16,6 +16,7 @@ public class BattleShip {
         System.out.println("The main goal of this game is to sink the computer's ships");
         System.out.println("To sink ships and place ships, type in the coordinates of the tile");
         System.out.println("Would you like to play a fast or normal round?");
+        //I forgot to add the part where i give the player an option of picking fast or normal, would have done an if else statement
         
 
         
@@ -63,19 +64,19 @@ public static void deployPlayer1Ships(){
     Scanner input = new Scanner(System.in);
 
     System.out.println("Player 1 please deploy your ships:");
-        BattleShip.player1Ships = 5;
-        for (int i = 1; i <= BattleShip.player1Ships;){
+        BattleShip.player1Ships = 4;
+        for (int i = 0; i++ <= BattleShip.player1Ships;){
             System.out.print("Enter X coordinate for your " + i + " ship: ");
             int x = input.nextInt();
-            System.out.print("Enter Y coordinate for your " + i + " ship: ");
+            System.out.print("Enter Y coordinate for your " + i +" ship: ");
             int y = input.nextInt();
 
             if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && (grid[x][y] == " "))
                 {
-                    grid[x][y] =   "X";
+                    grid[x][y] =   "@";
                     i++;
-                }
-                else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "#")
+                } //not sure why this is not working but this is suspposed to be the error handling part, same with p2 part
+                else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "@")
                     System.out.println("You can't place two or more ships on the same location");
                 else if((x < 0 || x >= numRows) || (y < 0 || y >= numCols))
                     System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
@@ -90,8 +91,8 @@ public static void deployPlayer2Ships(){
         
        System.out.println("Player 2 please deploy your ships:");
     
-        BattleShip.player2Ships = 5;
-        for (int i = 1; i <= BattleShip.player2Ships;){
+        BattleShip.player2Ships = 4;
+        for (int i = 0; i++ <= BattleShip.player2Ships;){
             System.out.print("Enter X coordinate for your " + i + " ship: ");
             int x = input.nextInt();
             System.out.print("Enter Y coordinate for your " + i + " ship: ");
@@ -99,10 +100,10 @@ public static void deployPlayer2Ships(){
 
             if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && (grid[x][y] == " "))
                 {
-                    grid[x][y] =   "#";
+                    grid[x][y] =   "@";
                     i++;
                 }
-                else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "#")
+                else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "@")
                     System.out.println("You can't place two or more ships on the same location");
                 else if((x < 0 || x >= numRows) || (y < 0 || y >= numCols))
                     System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
@@ -126,7 +127,7 @@ public static void deployPlayer2Ships(){
     
             if ((x >= 0 && x < numRows) && (y >= 0 && y < numCols)) //valid guess
             {
-                if (grid[x][y] == "x") 
+                if (grid[x][y] == "x") //not sure why ut's not showing up on the board
                     System.out.println("Boom! You sunk the ship!");
                     grid[x][y] = "!"; //Hit mark
                     --BattleShip.player1Ships;
