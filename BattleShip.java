@@ -31,29 +31,29 @@ public class BattleShip {
 //creating the map    
 public static void createMap(){
     
-        System.out.print("   ");
+        System.out.print("     ");
         for(int i = 1; i < numCols; i++)
-            System.out.print(i + "   ");
+            System.out.print(i + "  ");
         System.out.println();
 
     
         for(int i = 1; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                grid[i][j] = "   ";
+                grid[i][j] = "  ";
             if (j == 0)
-                System.out.print("" + grid[i][j]);
+                System.out.print(" " + grid[i][j]);
             else if (i == 1)
                 System.out.print("~" + grid[i][j]);
             else 
-                System.out.print(grid[i][j]);
+                System.out.print(grid[i][j] + "~");
         }
         System.out.println();
     }
 
     
-    System.out.print("   ");
+    System.out.print("     ");
         for(int i = 1; i < numCols; i++)
-            System.out.print(i + "   ");
+            System.out.print(i + "  ");
         System.out.println();
 }
 //adding in player ships now
