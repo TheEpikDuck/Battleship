@@ -41,7 +41,7 @@ public static void createMap(){
             if (j == 0)
                 System.out.print("~" + grid[i][j]);
             else if (j == grid[i].length - 1)
-                System.out.print(grid[i][j] + "~" + 1);
+                System.out.print(grid[i][j] + "~" );
             else
                 System.out.print(grid[i][j]);
         }
@@ -50,17 +50,17 @@ public static void createMap(){
 
     
     System.out.print("  ");
-    for(int i = 0; i < numRows; i++)
+    for(int i = 0; i < numCols; i++)
         System.out.print(i);
     System.out.println();
 }
 //adding in player ships now
 //something is wrong with this code right now, not sure how to fix it yet
 public static void deployPlayer1Ships(){
-    Scanner input = new Scanner(System.in) {
+    Scanner input = new Scanner(System.in);
     System.out.println("Please deploy your ships:");
-        BattleShip.playerShips = 5;
-        for (int i = 1; i <= BattleShip.playerShips;){
+        BattleShip.player1Ships = 5;
+        for (int i = 1; i <= BattleShip.player1Ships;){
             System.out.print("Enter X coordinate for your " + i + " ship: ");
             int x = input.nextInt();
             System.out.print("Enter Y coordinate for your " + i + " ship: ");
@@ -82,11 +82,12 @@ public static void deployPlayer1Ships(){
     
 
 public static void deployPlayer2Ships(){
-    Scanner input = new Scanner(System.in) {
-    System.out.println("Please deploy your ships:");
-    }
-        BattleShip.playerShips = 5;
-        for (int i = 1; i <= BattleShip.playerShips;){
+    Scanner input = new Scanner(System.in); {
+        
+       System.out.println("Please deploy your ships:");
+    
+        BattleShip.player2Ships = 5;
+        for (int i = 1; i <= BattleShip.player2Ships;){
             System.out.print("Enter X coordinate for your " + i + " ship: ");
             int x = input.nextInt();
             System.out.print("Enter Y coordinate for your " + i + " ship: ");
@@ -97,11 +98,12 @@ public static void deployPlayer2Ships(){
                     grid[x][y] =   "X";
                     i++;
                 }
-                else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "@")
+                else if((x >= 0 && x < numRows) && (y >= 0 && y < numCols) && grid[x][y] == "#")
                     System.out.println("You can't place two or more ships on the same location");
                 else if((x < 0 || x >= numRows) || (y < 0 || y >= numCols))
                     System.out.println("You can't place ships outside the " + numRows + " by " + numCols + " grid");
             }
+        }
     
 
     
@@ -214,7 +216,8 @@ public static void computerTurn(){
     
 }
 
-    }
+    
+}
 }
 
 
