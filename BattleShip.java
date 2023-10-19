@@ -1,6 +1,7 @@
 import java.util.Scanner;
 //this is still a very much work in progress, a lot of things are currently half finished
 public class BattleShip {
+    FastGame fastgame = new FastGame();
  
     static int numRows = 11;
     static int numCols = 11;
@@ -15,7 +16,9 @@ public class BattleShip {
         System.out.println("**** Welcome to BattleShip! ****");
         System.out.println("The main goal of this game is to sink the computer's ships");
         System.out.println("To sink ships and place ships, type in the coordinates of the tile");
-        System.out.println("Are you ready?");
+        System.out.println("Would you like to play a fast or normal round?");
+        
+
         
         createMap();
         deployPlayer1Ships();
@@ -202,34 +205,11 @@ public static void gameOver(){
     System.out.println();
 }
 
-
-
-
-    //adding in computer ships 
-//I haven't really finished any of the things below, i just put down like the basic things that i'm going to do
-public static void deployComputerShips(){
-    System.out.println("Computer is deploying ships");
-    
-    BattleShip.computerShips = 3;
-    for (int i = 1; i <= BattleShip.computerShips; ) {
-        int x = (int)(Math.random() * 8);
-        int y = (int)(Math.random() * 8);
-
-    }
 }
 
-public static void computerTurn(){
-    System.out.println("computer's turn");
-    //Guess co-ordinates
-    int x = -1, y = -1;
-    {
-        x = (int)(Math.random() * 10);
-        y = (int)(Math.random() * 10);
-    
-}
 
-    
-}
-}
+
+
+
 
 
